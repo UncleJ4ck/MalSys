@@ -7,7 +7,7 @@ MalSys is a versatile toolkit designed to assist in your malware analysis endeav
 
 <p align="center">
   <a href="./assets/icon.png">
-    <img src="./assets/icon.png">
+    <img src="./assets/icon.png" width="80" height="80">
   </a>
 </p>
 
@@ -32,7 +32,7 @@ python3 main.py download_sample --hash <SHA256 hash of the malware sample
 
 <p align="center">
   <a href="./assets/download.png">
-    <img src="./assets/download.png">
+    <img src="./assets/download.png" width="80" height="80">
   </a>
 </p>
 
@@ -46,13 +46,13 @@ python3 main.py scan_file --file 'path of the sample'
 ```
 <p align="center">
   <a href="./assets/scan_1.png">
-    <img src="./assets/scan_1.png">
+    <img src="./assets/scan_1.png" width="80" height="80">
   </a>
 </p>
 
 <p align="center">
   <a href="./assets/scan_2.png">
-    <img src="./assets/scan_2.png">
+    <img src="./assets/scan_2.png" width="80" height="80">
   </a>
 </p>
 
@@ -71,7 +71,7 @@ python3 main.py query_icon_dhash --hash 'hash'
 
 <p align="center">
   <a href="./assets/dhash_1.png">
-    <img src="./assets/dhash_1.png">
+    <img src="./assets/dhash_1.png" width="80" height="80">
   </a>
 </p>
 
@@ -85,6 +85,18 @@ python3 main.py query_icon_dhash --file 'sample'
 </p>
 
 > The features within MalSys mirror those available on the MalwareBazar API website, and this holds true across all operations.
+
+## Dockerfile
+
+```Bash
+docker run -it malsys:latest
+docker run -it malsys:latest python3 main.py 'operation' 'arguments'
+```
+<p align="center">
+  <a href="./assets/docker.png">
+    <img src="./assets/docker.png" width="80" height="80">
+  </a>
+</p>
 
 ## TO-DO
 
