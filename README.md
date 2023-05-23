@@ -26,7 +26,7 @@ python3 main.py <operation> <arguments>
 <details><summary>Download a sample from malware bazar</summary>
 
 ```Bash
-python3 main.py download_sample --hash <SHA256 hash of the malware sample>
+python3 main.py download_sample --hash <SHA256 hash of the malware sample
 ```
 > This command will download, unzip, and store the sample as a .exe or .bin file (or another format depending on the sample's filetype).
 
@@ -39,10 +39,10 @@ python3 main.py download_sample --hash <SHA256 hash of the malware sample>
 <details><summary> Scans a file using a specified file path or hash</summary>
 
 ```Bash
-python3 main.py scan_file --hash <hash of the sample>
+python3 main.py scan_file --hash 'hash of the sample'
 ```
 ```Bash
-python3 main.py scan_file --file <path of the sample>
+python3 main.py scan_file --file 'path of the sample'
 ```
 <p align="center">
   <a href="./assets/scan_1.png">
@@ -65,7 +65,7 @@ python3 main.py scan_file --file <path of the sample>
 <details><summary>Query an icon dhash using a specified file or hash</summary>
 
 ```Bash
-python3 main.py query_icon_dhash --hash <hash>
+python3 main.py query_icon_dhash --hash 'hash'
 ```
 > This command will query the hash using the MalwareBazar API.
 
@@ -76,7 +76,7 @@ python3 main.py query_icon_dhash --hash <hash>
 </p>
 
 ```Bash
-python3 main.py query_icon_dhash --file <sample>
+python3 main.py query_icon_dhash --file 'sample'
 ```
 <p align="center">
   <a href="./assets/dhash_2.png">
