@@ -1,7 +1,7 @@
 from PIL import Image
 from subprocess import run
 from colorama import Fore, Style
-from core.validator import (calculate_md5, validate_sha1, validate_md5, validate_sha256, validate_file, validate_file_header, unzip_sample)
+from core.validator import (calculate_md5, validate_pe_file, validate_sha1, validate_md5, validate_sha256, validate_file, validate_file_header, unzip_sample)
 import os
 import zipfile
 import lief
@@ -27,13 +27,13 @@ def download_sample(sha256_hash):
         else:
             print("", response.json())
     else:
-        print(Fore.RED + f"[!] Invalid Hash ! Submit a sha256 hash !", Style.RESET_ALL,)
+        print(Fore.RED + f"[!] Invalid Hash ! Enter a valid sha256 hash !", Style.RESET_ALL,)
 
 
 
 def query_icon_dhash(exe=None, dhash_value=None, hash_size = 8):
     if exe:
-        if not validate_file_header(exe):
+        if not validate_pe_file(exe):
             print(Fore.RED + "[-] Not a valid PE binary.", Style.RESET_ALL,)
             return None
         binary = lief.parse(exe)
@@ -389,6 +389,8 @@ def scan_file(file_path=None, hash_value=None):
             print(Fore.GREEN + "------------------------------------------------------------------------------------------------------------------------------------------------------------------", Style.RESET_ALL, end="\n\n")
     else:
         print(Fore.RED + "[!] An error occurred while making the request.", Style.RESET_ALL)
+
+
 
 def update_entry(sha256_hash, key, value, api_key):
     if validate_sha256(sha256_hash):

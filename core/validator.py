@@ -1,3 +1,4 @@
+from colorama import Fore, Style
 import os
 import re
 import hashlib
@@ -34,7 +35,7 @@ def validate_sha1(hash_value):
 
 def validate_file(file_path):
     if not os.path.isfile(file_path):
-        print("[!] Invalid file path.")
+        print(Fore.RED + "[!] Invalid file path.", Style.RESET_ALL)
         return False
     return True
 
@@ -42,13 +43,13 @@ def validate_file_header(file_path):
     with open(file_path, "rb") as f:
         header = f.read(4)
         if header[:2] == b"MZ":
-            print("[+] File is a valid PE binary.")
+            print(Fore.GREEN + "[+] File is a valid PE binary.", Style.RESET_ALL)
             return True
         elif header[:4] == b"\x7fELF":
-            print("[+] File is a valid ELF binary.")
+            print(Fore.GREEN + "[+] File is a valid ELF binary.", Style.RESET_ALL)
             return True
         else:
-            print("[!] File is neither a valid PE nor ELF binary.")
+            print(Fore.RED + "[!] File is neither a valid PE nor ELF binary.", Style.RESET_ALL)
             return False 
 
 def calculate_md5(file_path):
@@ -63,11 +64,20 @@ def unzip_sample(zip_path, sha256_hash):
     try:
         with pyzipper.AESZipFile(zip_path) as zf:
             zf.extractall(path=f"{sha256_hash}_sample", pwd=password.encode('utf-8'))
-        print("[+] Sample unzipped successfully.")
+        print(Fore.GREEN + "[+] Sample unzipped successfully.", Style.RESET_ALL)
         try:
             os.remove(zip_path)
-            print(f"[+] Zip file {zip_path} deleted successfully.")
+            print(Fore.GREEN + f"[+] Zip file '{zip_path}' deleted successfully.", Style.RESET_ALL)
         except Exception as e:
-            print(Fore.RED + f"[!] An error occurred while deleting the zip file: {str(e)}")
+            print(Fore.RED + f"[!] An error occurred while deleting the zip file: {str(e)}", Style.RESET_ALL)
     except Exception as e:
-        print(Fore.RED + "[!] An error occurred while unzipping the sample:", str(e))
+        print(Fore.RED + "[!] An error occurred while unzipping the sample:", str(e), Style.RESET_ALL)
+
+
+def validate_pe_file(file_path):
+    with open(file_path, "rb") as f:
+        header = f.read(4)
+        if header[:2] == b"MZ":
+            print(Fore.GREEN + "[+] File is a valid PE binary.", Style.RESET_ALL)
+            return True
+        return False

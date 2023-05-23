@@ -18,7 +18,7 @@ def print_banner():
 def parse_args():
     print_banner()
     parser = argparse.ArgumentParser(
-        description=f'{Fore.GREEN}API Query tool for various operations{Style.RESET_ALL}',
+        description=f'{Fore.GREEN}Malsys is a project designed to validate and analyze files for potential malware signatures.{Style.RESET_ALL}',
         epilog=f'{Fore.GREEN}For more information about each operation, type "python3 main.py <operation> -h"{Style.RESET_ALL}'
     )
     subparsers = parser.add_subparsers(dest='operation', title='Available operations')
@@ -30,20 +30,20 @@ def parse_args():
     download_parser.add_argument('--hash', required=True, help='SHA256 hash of the malware sample')
     query_yara_parser = subparsers.add_parser(
         'query_yara_rule',
-        help='Queries a specific YARA rule',
-        description=f'{Fore.GREEN}Queries a specific YARA rule using a given rule{Style.RESET_ALL}'
+        help='Query a specific YARA rule',
+        description=f'{Fore.GREEN}Query a specific YARA rule using a given rule{Style.RESET_ALL}'
     )
     query_yara_parser.add_argument('--rule', required=True, help='The YARA rule to query')
     query_telfhash_parser = subparsers.add_parser(
         'query_telfhash',
-        help='Queries a specific telfhash',
-        description=f'{Fore.GREEN}Queries a specific telfhash using a given hash{Style.RESET_ALL}'
+        help='Query a specific telfhash',
+        description=f'{Fore.GREEN}Query a specific telfhash using a given hash{Style.RESET_ALL}'
     )
     query_telfhash_parser.add_argument('--hash', required=True, help='The telfhash to query')
     query_dhash_parser = subparsers.add_parser(
         'query_icon_dhash',
-        help='Queries an icon dhash',
-        description=f'{Fore.GREEN}Queries an icon dhash using a specified file or hash{Style.RESET_ALL}'
+        help='Query an icon dhash',
+        description=f'{Fore.GREEN}Query an icon dhash using a specified file or hash{Style.RESET_ALL}'
     )
     query_dhash_parser.add_argument('--file', help='Path to the PE file')
     query_dhash_parser.add_argument('--hash', help='Hash to scan')
@@ -56,38 +56,38 @@ def parse_args():
     scan_file_parser.add_argument('--hash', help='Hash to scan')
     query_imphash_parser = subparsers.add_parser(
         'query_imphash',
-        help='Queries an imphash',
-        description=f'{Fore.GREEN}Queries an imphash using a given hash{Style.RESET_ALL}'
+        help='Query an imphash',
+        description=f'{Fore.GREEN}Query an imphash using a given hash{Style.RESET_ALL}'
     )
     query_imphash_parser.add_argument('--hash', required=True, help='The imphash to query')
     query_gimphash_parser = subparsers.add_parser(
         'query_gimphash',
-        help='Queries a gimphash',
-        description=f'{Fore.GREEN}Queries a gimphash using a given hash{Style.RESET_ALL}'
+        help='Query a gimphash',
+        description=f'{Fore.GREEN}Query a gimphash using a given hash{Style.RESET_ALL}'
     )
     query_gimphash_parser.add_argument('--hash', required=True, help='The gimphash to query')
     query_tag_parser = subparsers.add_parser(
         'query_tag',
-        help='Queries a tag',
-        description=f'{Fore.GREEN}Queries a tag using a given tag{Style.RESET_ALL}'
+        help='Query a tag',
+        description=f'{Fore.GREEN}Query a tag using a given tag{Style.RESET_ALL}'
     )
     query_tag_parser.add_argument('--tag', required=True, help='The tag to query')
     query_signature_parser = subparsers.add_parser(
         'query_signature',
-        help='Queries a signature',
-        description=f'{Fore.GREEN}Queries a signature using a given signature{Style.RESET_ALL}'
+        help='Query a signature',
+        description=f'{Fore.GREEN}Query a signature using a given signature{Style.RESET_ALL}'
     )
     query_signature_parser.add_argument('--signature', required=True, help='The signature to query')
     query_file_type_parser = subparsers.add_parser(
         'query_filetype',
-        help='Queries a file type',
-        description=f'{Fore.GREEN}Queries a file type using a given file{Style.RESET_ALL}'
+        help='Query a file type',
+        description=f'{Fore.GREEN}Query a file type using a given file{Style.RESET_ALL}'
     )
     query_file_type_parser.add_argument('--file', required=True, help='The file type to query')
     query_clamav_signature_parser = subparsers.add_parser(
         'query_clamav_signature',
-        help='Queries a ClamAV signature',
-        description=f'{Fore.GREEN}Queries a ClamAV signature using a given signature{Style.RESET_ALL}'
+        help='Query a ClamAV signature',
+        description=f'{Fore.GREEN}Query a ClamAV signature using a given signature{Style.RESET_ALL}'
     )
     query_clamav_signature_parser.add_argument('--signature', required=True, help='The ClamAV signature to query')
     update_entry_parser = subparsers.add_parser(
