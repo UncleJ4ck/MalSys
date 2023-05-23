@@ -100,7 +100,7 @@ docker run -it malsys:latest python3 main.py 'operation' 'arguments'
 
 ## TO-DO
 
-- [-] Addition of other free API services such as AlienVault, etc.
-- [-] Implementation of features like IOC scanning and Yara Generation
-- [-] Bug fixes
-- [-] Incorporation of live dynamic analysis via sandboxing and other methods
+- [ ] Addition of other free API services such as AlienVault, etc.
+- [ ] Implementation of features like IOC scanning and Yara Generation
+- [ ] Bug fixes
+- [ ] Incorporation of live dynamic analysis via sandboxing and other methods
