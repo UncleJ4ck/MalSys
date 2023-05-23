@@ -1,2 +1,4 @@
 # MalSys
-Malsys is a project designed to validate and analyze files for potential malware signatures.
+
+
+MalSys is a project based which you can use as a toolkit in your malware analysis journey

@@ -1,0 +1,8 @@
+colorama==0.4.6
+lief==0.13.0
+Pillow==9.5.0
+Pillow==9.5.0
+pyfiglet==0.8.post1
+pyzipper==0.3.6
+Requests==2.31.0
+termcolor==2.3.0

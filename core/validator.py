@@ -1,0 +1,73 @@
+import os
+import re
+import hashlib
+import pyzipper
+
+
+def validate_sha256(hash_value):
+    if not isinstance(hash_value, str):
+        return False
+    if len(hash_value) != 64:
+        return False
+    if not re.fullmatch(r'[A-Fa-f0-9]{64}', hash_value):
+        return False
+    return True
+
+def validate_md5(hash_value):
+    if not isinstance(hash_value, str):
+        return False
+    if len(hash_value) != 32:
+        return False
+    if not re.fullmatch(r'[A-Fa-f0-9]{32}', hash_value):
+        return False
+    return True
+
+def validate_sha1(hash_value):
+    if not isinstance(hash_value, str):
+        return False
+    if len(hash_value) != 40:
+        return False
+    if not re.fullmatch(r'[A-Fa-f0-9]{40}', hash_value):
+        return False
+    return True
+
+
+def validate_file(file_path):
+    if not os.path.isfile(file_path):
+        print("[!] Invalid file path.")
+        return False
+    return True
+
+def validate_file_header(file_path):
+    with open(file_path, "rb") as f:
+        header = f.read(4)
+        if header[:2] == b"MZ":
+            print("[+] File is a valid PE binary.")
+            return True
+        elif header[:4] == b"\x7fELF":
+            print("[+] File is a valid ELF binary.")
+            return True
+        else:
+            print("[!] File is neither a valid PE nor ELF binary.")
+            return False 
+
+def calculate_md5(file_path):
+    md5_hash = hashlib.md5()
+    with open(file_path, "rb") as file:
+        for chunk in iter(lambda: file.read(4096), b""):
+            md5_hash.update(chunk)
+    return md5_hash.hexdigest()
+
+def unzip_sample(zip_path, sha256_hash):
+    password = "infected"
+    try:
+        with pyzipper.AESZipFile(zip_path) as zf:
+            zf.extractall(path=f"{sha256_hash}_sample", pwd=password.encode('utf-8'))
+        print("[+] Sample unzipped successfully.")
+        try:
+            os.remove(zip_path)
+            print(f"[+] Zip file {zip_path} deleted successfully.")
+        except Exception as e:
+            print(Fore.RED + f"[!] An error occurred while deleting the zip file: {str(e)}")
+    except Exception as e:
+        print(Fore.RED + "[!] An error occurred while unzipping the sample:", str(e))
