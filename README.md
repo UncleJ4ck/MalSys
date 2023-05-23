@@ -23,7 +23,7 @@ python3 main.py <operation> <arguments>
 
 ## Capabilities
 
-<details><summary>Download a sample from malware bazar</summary>
+- Download a sample from malware bazar
 
 ```Bash
 python3 main.py download_sample --hash <SHA256 hash of the malware sample
@@ -36,7 +36,7 @@ python3 main.py download_sample --hash <SHA256 hash of the malware sample
   </a>
 </p>
 
-<details><summary> Scans a file using a specified file path or hash</summary>
+- Scans a file using a specified file path or hash
 
 ```Bash
 python3 main.py scan_file --hash 'hash of the sample'
@@ -62,7 +62,7 @@ python3 main.py scan_file --file 'path of the sample'
   </a>
 </p>
 
-<details><summary>Query an icon dhash using a specified file or hash</summary>
+- Query an icon dhash using a specified file or hash</summary>
 
 ```Bash
 python3 main.py query_icon_dhash --hash 'hash'
